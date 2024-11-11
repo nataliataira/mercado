@@ -4,19 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e80aace-f226-4def-95e2-1a4a4a5c53b1" name="Changes" comment="" />
+    <list default="true" id="4e80aace-f226-4def-95e2-1a4a4a5c53b1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Compra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Fornecedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Fornecedor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/LogTransacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/LogTransacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Produto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Venda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Venda.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2oZhTXrSCHYF8xq0iG2UM1ABl3H" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -24,9 +43,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "feat/realizar__compra",
     "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "/Users/westwingbr/IdeaProjects/mercado/m/src/main/java/com/java/Main.java"
+    "last_opened_file_path": "C:/Users/Franz/Desktop/Repositórios/mercado",
+    "onboarding.tips.debug.path": "/Users/westwingbr/IdeaProjects/mercado/m/src/main/java/com/java/Main.java",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

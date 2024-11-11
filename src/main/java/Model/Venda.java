@@ -11,7 +11,7 @@ public class Venda {
     private Date dataVenda;
     private double valorTotal;
 
-    public Venda(int codigo, List<Produto> produtos, String metodoPagamento, int quantidade, Date dataVenda, double valorTotal) {
+    public Venda(int codigo, List<Produto> produtos, String metodoPagamento, int quantidade, Date dataVenda, double valorTotal) throws IllegalArgumentException {
         setCodigo(codigo);
         setProdutos(produtos);
         setMetodoPagamento(metodoPagamento);
@@ -24,7 +24,10 @@ public class Venda {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(int codigo) throws IllegalArgumentException {
+        if (codigo < 0)
+            throw new IllegalArgumentException("O código não pode ter valor negativo.");
+
         this.codigo = codigo;
     }
 
@@ -32,7 +35,10 @@ public class Venda {
         return produtos;
     }
 
-    public void setProdutos(List<Produto> produtos) {
+    public void setProdutos(List<Produto> produtos) throws IllegalArgumentException {
+        if (produtos == null)
+            throw new IllegalArgumentException("A lista de produtos não pode estar vazia.");
+
         this.produtos = produtos;
     }
 
@@ -40,7 +46,15 @@ public class Venda {
         return metodoPagamento;
     }
 
-    public void setMetodoPagamento(String metodoPagamento) {
+    public void setMetodoPagamento(String metodoPagamento) throws IllegalArgumentException {
+        if (metodoPagamento == null)
+            throw new IllegalArgumentException("O método de pagamento não pode estar vazio.");
+
+        if (!metodoPagamento.equalsIgnoreCase("dinheiro") &&
+                !metodoPagamento.equalsIgnoreCase("cartão") &&
+                !metodoPagamento.equalsIgnoreCase("pix"))
+            throw new IllegalArgumentException("Método de pagamento inválido. Use dinheiro, cartão ou pix.");
+
         this.metodoPagamento = metodoPagamento;
     }
 
@@ -48,15 +62,24 @@ public class Venda {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(int quantidade) throws IllegalArgumentException {
+        if (quantidade <= 0)
+            throw new IllegalArgumentException("A quantidade deve ser maior que zero.");
+
         this.quantidade = quantidade;
     }
 
     public Date getDataVenda() {
-        return dataVenda;
+        return new Date(dataVenda.getTime());
     }
 
-    public void setDataVenda(Date dataVenda) {
+    public void setDataVenda(Date dataVenda) throws IllegalArgumentException {
+        if (dataVenda == null)
+            throw new IllegalArgumentException("A data da venda não pode ser nula.");
+
+        if (dataVenda.after(new Date()))
+            throw new IllegalArgumentException("A data da venda não pode ser no futuro.");
+
         this.dataVenda = dataVenda;
     }
 
@@ -64,7 +87,10 @@ public class Venda {
         return valorTotal;
     }
 
-    public void setValorTotal(double valorTotal) {
+    public void setValorTotal(double valorTotal) throws IllegalArgumentException {
+        if (valorTotal < 0)
+            throw new IllegalArgumentException("O valor total não pode ser negativo.");
+
         this.valorTotal = valorTotal;
     }
 

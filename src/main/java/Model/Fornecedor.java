@@ -10,7 +10,7 @@ public class Fornecedor {
     private String telefone;
     private String email;
 
-    public Fornecedor(int codigo, String nome, String cnpj, String endereco, String telefone, String email) {
+    public Fornecedor(int codigo, String nome, String cnpj, String endereco, String telefone, String email) throws IllegalArgumentException {
         setCodigo(codigo);
         setNome(nome);
         setCnpj(cnpj);
@@ -23,15 +23,21 @@ public class Fornecedor {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(int codigo) throws IllegalArgumentException {
+        if (codigo < 0)
+            throw new IllegalArgumentException("O código não pode ter valor negativo.");
+
         this.codigo = codigo;
     }
 
-    public String getNome() {
+    public String getNome()  {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome) throws IllegalArgumentException {
+        if (nome == null)
+            throw new IllegalArgumentException("O nome não pode estar vazio.");
+
         this.nome = nome;
     }
 
@@ -39,7 +45,14 @@ public class Fornecedor {
         return cnpj;
     }
 
-    public void setCnpj(String cnpj) {
+    public void setCnpj(String cnpj) throws IllegalArgumentException {
+        int TAM_CNPJ = 14;
+
+        if (cnpj == null)
+            throw new IllegalArgumentException("CNPJ não pode ser vazio.");
+        else if (cnpj.length() < TAM_CNPJ)
+            throw new IllegalArgumentException("CNPJ muito curto.");
+
         this.cnpj = cnpj;
     }
 
@@ -47,7 +60,10 @@ public class Fornecedor {
         return endereco;
     }
 
-    public void setEndereco(String endereco) {
+    public void setEndereco(String endereco) throws IllegalArgumentException {
+        if (endereco == null)
+            throw new IllegalArgumentException("O endereço do fornecedor não pode estar vazio.");
+
         this.endereco = endereco;
     }
 
@@ -55,7 +71,10 @@ public class Fornecedor {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(String telefone) throws IllegalArgumentException {
+        if (telefone == null)
+            throw new IllegalArgumentException("O telefone não pode estar vazio.");
+
         this.telefone = telefone;
     }
 
@@ -63,7 +82,15 @@ public class Fornecedor {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email) throws IllegalArgumentException {
+        if (email == null)
+            throw new IllegalArgumentException("O email deve ser preenchido.");
+
+        int indexArroba = email.indexOf('@');
+
+        if (!(indexArroba > 0 && indexArroba < email.length() - 1))
+            throw new IllegalArgumentException("Email inválido.");
+
         this.email = email;
     }
 
