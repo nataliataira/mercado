@@ -14,7 +14,7 @@ public class Estoque {
 
     public Estoque(int quantidade/*,Produto produto*/, String tipoModificacao) throws IllegalArgumentException {
         setQuantidade(quantidade);
-//        setProduto(produto);
+        setProduto(produto);
         setDataModificacao(new Date());
         setTipoModificacao(tipoModificacao);
     }
@@ -30,13 +30,13 @@ public class Estoque {
         this.quantidade = quantidade;
     }
 
-//    public Produto getProduto() {
-//        return produto;
-//    }
-//
-//    public void setProduto(Produto produto) {
-//        this.produto = produto;
-//    }
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
 
     public Date getDataModificacao() {
         return dataModificacao;

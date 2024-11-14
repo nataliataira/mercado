@@ -8,10 +8,10 @@ public abstract class Funcionario {
     private String telefone;
     private String email;
 
-    public Funcionario(int codigo, String nome, String CNPJ, String endereco, String telefone, String email) throws IllegalArgumentException {
+    public Funcionario(int codigo, String nome, String CPF, String endereco, String telefone, String email) throws IllegalArgumentException {
         setCodigo(codigo);
         setNome(nome);
-        setCNPJ(CNPJ);
+        setCPF(CPF);
         setEndereco(endereco);
         setTelefone(telefone);
         setEmail(email);
@@ -41,7 +41,7 @@ public abstract class Funcionario {
 
     public void setCPF(String CPF) throws IllegalArgumentException {
         int TAM_CPF = 11;
-        if (CNPJ == null) {
+        if (CPF == null) {
             throw new IllegalArgumentException("CPF não pode ser vazio.");
         }
         else if (CPF.length() < TAM_CPF)
@@ -97,7 +97,7 @@ public abstract class Funcionario {
     {
         System.out.println("Consulta ao funcionário");
         System.out.println("nome: "+getNome());
-        System.out.println("cnpj: "+getCNPJ());
+        System.out.println("cnpj: "+getCPF());
         System.out.println("endereço : "+getEndereco());
         System.out.println("telefone : "+getTelefone());
         System.out.println("email : "+getEmail());

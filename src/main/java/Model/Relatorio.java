@@ -38,37 +38,37 @@ public class Relatorio
         this.dataFim = dataFim;
     }
 
-    public void gerarRelatorioVendas(/*List<Venda> vendas*/) {
-//        int totalVendas = 0;
+    public void gerarRelatorioVendas() {
+        int totalVendas = 0;
 //        System.out.println("Relatório de Vendas de " + dataInicio + " a " + dataFim);
 //
-//        System.out.println("Total das Vendas: " + totalVendas);
+        System.out.println("Total das Vendas: " + totalVendas);
     }
 
     public void gerarRelatorioEstoque(/*List<Produto> produtos*/) {
-//        System.out.println("Relatório de Estoque Atual:";
+        System.out.println("Relatório de Estoque Atual:");
 //
     }
 
     public void gerarRelatorioCompras(/*List<Compra> compras*/) {
-//        int totalCompras = 0;
-//        System.out.println("Relatório de Compras de " + dataInicio + " a " + dataFim);
+        int totalCompras = 0;
+        System.out.println("Relatório de Compras de " + dataInicio + " a " + dataFim);
 //
-//        System.out.println("Total das Compras: " + totalCompras);
+        System.out.println("Total das Compras: " + totalCompras);
     }
 
     public void gerarRelatorioDesempenhoProdutos(/*List<Venda> vendas*/) {
-//        System.out.println("Relatório de Desempenho de Produtos:");
+        System.out.println("Relatório de Desempenho de Produtos:");
 //
     }
 
     public void gerarRelatorioFluxoCaixa(/*List<Venda> vendas, List<Compra> compras*/) {
-//        double totalVendas;
-//        double totalCompras;
-//        double lucro;
-//        System.out.println("Relatório de Fluxo de Caixa de " + dataInicio + " a " + dataFim);
-//        System.out.println("Total de Vendas: " + totalVendas);
-//        System.out.println("Total de Compras: " + totalCompras);
-//        System.out.println("Lucro Líquido: " + lucro);
+        double totalVendas = 0.0;
+        double totalCompras = 0.0;
+        double lucro = 0.0;
+        System.out.println("Relatório de Fluxo de Caixa de " + dataInicio + " a " + dataFim);
+        System.out.println("Total de Vendas: " + totalVendas);
+        System.out.println("Total de Compras: " + totalCompras);
+        System.out.println("Lucro Líquido: " + lucro);
     }
 }

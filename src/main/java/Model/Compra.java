@@ -1,18 +1,19 @@
 package Model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Compra {
     private int codigo;
-    //    private List<item> itens;
+    private List<Item> itens;
     private double valorTotal;
     private int quantidade;
     private Date dataCompra;
     private Fornecedor fornecedor;
 
-    public Compra(int codigo /*, List<Item> itens*/, double valorTotal, int quantidade, Date dataCompra, Fornecedor fornecedor) throws IllegalArgumentException {
+    public Compra(int codigo , List<Item> itens, double valorTotal, int quantidade, Date dataCompra, Fornecedor fornecedor) throws IllegalArgumentException {
         setCodigo(codigo);
-//        setItens(itens);
+        setItens(itens);
         setValorTotal(valorTotal);
         setQuantidade(quantidade);
         setDataCompra(dataCompra);
@@ -30,16 +31,16 @@ public class Compra {
         this.codigo = codigo;
     }
 
-//    public List<Item> getItens() {
-//        return itens;
-//    }
-//
-//    public void setItens(List<Item> itens) throws IllegalArgumentException {
-//        if (itens == null)
-//            throw new IllegalArgumentException("A lista de itens não pode estar vazia.");
-//
-//        this.itens = itens;
-//    }
+    public List<Item> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<Item> itens) throws IllegalArgumentException {
+        if (itens == null)
+            throw new IllegalArgumentException("A lista de itens não pode estar vazia.");
+
+        this.itens = itens;
+    }
 
     public double getValorTotal() {
         return valorTotal;

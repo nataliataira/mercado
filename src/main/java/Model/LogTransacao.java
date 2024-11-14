@@ -77,9 +77,9 @@ public class LogTransacao {
         //
     }
 
-    public void consultarLog() {
-//        System.out.println("Registro da transação de " + tipoTransacao + " realizada em " + data);
-//        System.out.println("Usuário responsável: " + usuario);
-//        System.out.println("Detalhes da operação: " + detalhesOperacao);
+    public void consultarLog(String tipoTransacao, Date data) {
+        System.out.println("Registro da transação de " + tipoTransacao + " realizada em " + data);
+        System.out.println("Usuário responsável: " + usuario);
+        System.out.println("Detalhes da operação: " + detalhesOperacao);
     }
 }

@@ -98,16 +98,16 @@ public class Fornecedor {
         //
     }
 
-    public void consultarCompras(/*List<Compra> compras*/) {
-//        int totalCompras = 0;
+    public void consultarCompras(List<Compra> compras) {
+        int totalCompras = 0;
 //        Verificar nos produtos de compras o fornecedor igual ao registrado
-//        System.out.println("Compras realizadas de " + nome);
+        System.out.println("Compras realizadas de " + nome);
 //
 //        Fazer Loop de compras feitas pelo fornecedor
 //        System.out.println("Compra feita em " + compra.data);
 //        System.out.println("Produto: " + compra.produto);
 //        System.out.println("Valor total: " + compra.valorTotal);
 
-//        System.out.println("Total de compras: " + totalCompras);
+        System.out.println("Total de compras: " + totalCompras);
     }
 }
