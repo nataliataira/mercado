@@ -4,17 +4,19 @@ import java.util.Date;
 
 public class Compra {
     private int codigo;
-    private Produto produto;
+    //    private List<item> itens;
     private double valorTotal;
     private int quantidade;
     private Date dataCompra;
+    private Fornecedor fornecedor;
 
-    public Compra(int codigo, Produto produto, double valorTotal, int quantidade, Date dataCompra) throws IllegalArgumentException {
+    public Compra(int codigo /*, List<Item> itens*/, double valorTotal, int quantidade, Date dataCompra, Fornecedor fornecedor) throws IllegalArgumentException {
         setCodigo(codigo);
-        setProduto(produto);
+//        setItens(itens);
         setValorTotal(valorTotal);
         setQuantidade(quantidade);
         setDataCompra(dataCompra);
+        setFornecedor(fornecedor);
     }
 
     public int getCodigo() {
@@ -28,16 +30,16 @@ public class Compra {
         this.codigo = codigo;
     }
 
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) throws IllegalArgumentException {
-        if (produto == null)
-            throw new IllegalArgumentException("O produto deve ser informado.");
-
-        this.produto = produto;
-    }
+//    public List<Item> getItens() {
+//        return itens;
+//    }
+//
+//    public void setItens(List<Item> itens) throws IllegalArgumentException {
+//        if (itens == null)
+//            throw new IllegalArgumentException("A lista de itens não pode estar vazia.");
+//
+//        this.itens = itens;
+//    }
 
     public double getValorTotal() {
         return valorTotal;
@@ -72,6 +74,17 @@ public class Compra {
             throw new IllegalArgumentException("A data da compra não pode ser futura.");
 
         this.dataCompra = new Date(dataCompra.getTime());
+    }
+
+    public Fornecedor getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(Fornecedor fornecedor) throws IllegalArgumentException {
+        if (fornecedor == null)
+            throw new IllegalArgumentException("O fornecedor deve ser informado.");
+
+        this.fornecedor = fornecedor;
     }
 
     public void realizarCompra() {

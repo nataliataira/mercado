@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e80aace-f226-4def-95e2-1a4a4a5c53b1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Compra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Fornecedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Fornecedor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/LogTransacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/LogTransacao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Produto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Venda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Venda.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,16 +35,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feat/realizar__compra",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Franz/Desktop/Repositórios/mercado",
-    "onboarding.tips.debug.path": "/Users/westwingbr/IdeaProjects/mercado/m/src/main/java/com/java/Main.java",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat/realizar__compra&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Franz/Desktop/Repositórios/mercado&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/westwingbr/IdeaProjects/mercado/m/src/main/java/com/java/Main.java&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

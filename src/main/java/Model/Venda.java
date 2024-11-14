@@ -5,15 +5,15 @@ import java.util.List;
 
 public class Venda {
     private int codigo;
-    private List<Produto> produtos;
+//    private List<item> itens;
     private String metodoPagamento;
     private int quantidade;
     private Date dataVenda;
     private double valorTotal;
 
-    public Venda(int codigo, List<Produto> produtos, String metodoPagamento, int quantidade, Date dataVenda, double valorTotal) throws IllegalArgumentException {
+    public Venda(int codigo/*, List<Item> itens*/, String metodoPagamento, int quantidade, Date dataVenda, double valorTotal) throws IllegalArgumentException {
         setCodigo(codigo);
-        setProdutos(produtos);
+//        setItens(itens);
         setMetodoPagamento(metodoPagamento);
         setQuantidade(quantidade);
         setDataVenda(dataVenda);
@@ -31,16 +31,16 @@ public class Venda {
         this.codigo = codigo;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Produto> produtos) throws IllegalArgumentException {
-        if (produtos == null)
-            throw new IllegalArgumentException("A lista de produtos não pode estar vazia.");
-
-        this.produtos = produtos;
-    }
+//    public List<Item> getItens() {
+//        return itens;
+//    }
+//
+//    public void setItens(List<Item> itens) throws IllegalArgumentException {
+//        if (itens == null)
+//            throw new IllegalArgumentException("A lista de itens não pode estar vazia.");
+//
+//        this.itens = itens;
+//    }
 
     public String getMetodoPagamento() {
         return metodoPagamento;

@@ -3,20 +3,12 @@ package Model;
 public class Produto {
     private String codigoBarras;
     private String nome;
-    private double precoVenda;
-    private double precoCompra;
     private String categoria;
-    private Fornecedor fornecedor;
-    private int quantEmEstoque;
 
-    public Produto(String codigoBarras, String nome, double precoVenda, double precoCompra, String categoria, Fornecedor fornecedor, int quantEmEstoque) throws IllegalArgumentException {
+    public Produto(String codigoBarras, String nome, String categoria) throws IllegalArgumentException {
         setCodigoBarras(codigoBarras);
         setNome(nome);
-        setPrecoVenda(precoVenda);
-        setPrecoCompra(precoCompra);
         setCategoria(categoria);
-        setFornecedor(fornecedor);
-        setQuantEmEstoque(quantEmEstoque);
     }
 
     public String getCodigoBarras() {
@@ -41,30 +33,6 @@ public class Produto {
         this.nome = nome;
     }
 
-    public double getPrecoVenda() {
-        return precoVenda;
-    }
-
-    public void setPrecoVenda(double precoVenda) throws IllegalArgumentException {
-        if (precoVenda < 0)
-            throw new IllegalArgumentException("O preço de venda não pode ser negativo.");
-        if (precoCompra > 0 && precoVenda < precoCompra)
-            throw new IllegalArgumentException("O preço de venda não pode ser menor que o preço de compra.");
-
-        this.precoVenda = precoVenda;
-    }
-
-    public double getPrecoCompra() {
-        return precoCompra;
-    }
-
-    public void setPrecoCompra(double precoCompra) throws IllegalArgumentException {
-        if (precoCompra < 0)
-            throw new IllegalArgumentException("O preço de compra não pode ser negativo.");
-
-        this.precoCompra = precoCompra;
-    }
-
     public String getCategoria() {
         return categoria;
     }
@@ -74,28 +42,6 @@ public class Produto {
             throw new IllegalArgumentException("A categoria do produto não pode estar vazia.");
 
         this.categoria = categoria;
-    }
-
-    public Fornecedor getFornecedor() {
-        return fornecedor;
-    }
-
-    public void setFornecedor(Fornecedor fornecedor) throws IllegalArgumentException {
-        if (fornecedor == null)
-            throw new IllegalArgumentException("O fornecedor deve ser informado.");
-
-        this.fornecedor = fornecedor;
-    }
-
-    public int getQuantEmEstoque() {
-        return quantEmEstoque;
-    }
-
-    public void setQuantEmEstoque(int quantEmEstoque) throws IllegalArgumentException {
-        if (quantEmEstoque < 0)
-            throw new IllegalArgumentException("A quantidade em estoque não pode ser negativa.");
-
-        this.quantEmEstoque = quantEmEstoque;
     }
 
     public void quantidadeCompra() {
