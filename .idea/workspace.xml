@@ -8,11 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Compra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Compra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Estoque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Estoque.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Fornecedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Fornecedor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Funcionario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/LogTransacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/LogTransacao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Gestor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Gestor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/OperadorDeCaixa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/OperadorDeCaixa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Relatorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Relatorio.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

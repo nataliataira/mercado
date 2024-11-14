@@ -11,10 +11,8 @@ public class Compra {
     private Date dataCompra;
     private Fornecedor fornecedor;
 
-    public Compra(int codigo , List<Item> itens, double valorTotal, int quantidade, Date dataCompra, Fornecedor fornecedor) throws IllegalArgumentException {
-        setCodigo(codigo);
+    public Compra(List<Item> itens, int quantidade, Date dataCompra, Fornecedor fornecedor) throws IllegalArgumentException {
         setItens(itens);
-        setValorTotal(valorTotal);
         setQuantidade(quantidade);
         setDataCompra(dataCompra);
         setFornecedor(fornecedor);
@@ -68,13 +66,8 @@ public class Compra {
         return new Date(dataCompra.getTime());
     }
 
-    public void setDataCompra(Date dataCompra) throws IllegalArgumentException {
-        if (dataCompra == null)
-            throw new IllegalArgumentException("A data da compra deve ser informada e não pode estar vazia.");
-        if (dataCompra.after(new Date()))
-            throw new IllegalArgumentException("A data da compra não pode ser futura.");
-
-        this.dataCompra = new Date(dataCompra.getTime());
+    public void setDataCompra(Date dataCompra) {
+        this.dataCompra = new Date();
     }
 
     public Fornecedor getFornecedor() {
@@ -88,7 +81,7 @@ public class Compra {
         this.fornecedor = fornecedor;
     }
 
-    public void realizarCompra() {
+    public void realizarCompra(Estoque estoque) {
         //
     }
 }

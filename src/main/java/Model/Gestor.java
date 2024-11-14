@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Gestor extends Funcionario {
@@ -34,5 +36,10 @@ public class Gestor extends Funcionario {
                 relatorio.gerarRelatorioFluxoCaixa();
         }
         sc.close();
+    }
+
+    public void realizarCompra(List<Item> itensCompra)
+    {
+        Compra compra = new Compra();
     }
 }

@@ -9,6 +9,6 @@ public class OperadorDeCaixa extends Funcionario {
 
     public void realizarVenda(Venda venda)
     {
-        //
+
     }
 }

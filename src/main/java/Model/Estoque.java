@@ -1,9 +1,10 @@
 package Model;
 import java.util.Date;
+import java.util.List;
 
 public class Estoque {
     private int quantidade;
-//    private Produto produto;
+    private List<Item> itens;
     private Date dataModificacao;
     private String tipoModificacao;
 
@@ -12,9 +13,9 @@ public class Estoque {
     public static final String TIPO_SAIDA = "SAIDA";
     public static final String TIPO_AJUSTE_MANUAL = "AJUSTE_MANUAL";
 
-    public Estoque(int quantidade/*,Produto produto*/, String tipoModificacao) throws IllegalArgumentException {
+    public Estoque(int quantidade,List<Item> itens, String tipoModificacao) throws IllegalArgumentException {
         setQuantidade(quantidade);
-        setProduto(produto);
+        setItens(itens);
         setDataModificacao(new Date());
         setTipoModificacao(tipoModificacao);
     }
@@ -30,12 +31,12 @@ public class Estoque {
         this.quantidade = quantidade;
     }
 
-    public Produto getProduto() {
-        return produto;
+    public List<Item> getItens() {
+        return itens;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
     }
 
     public Date getDataModificacao() {
