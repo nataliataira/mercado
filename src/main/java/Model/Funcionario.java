@@ -3,7 +3,7 @@ package Model;
 public abstract class Funcionario {
     private int codigo;
     private String nome;
-    private String CNPJ;
+    private String CPF;
     private String endereco;
     private String telefone;
     private String email;
@@ -35,20 +35,20 @@ public abstract class Funcionario {
         this.nome = nome;
     }
 
-    public String getCNPJ() {
-        return CNPJ;
+    public String getCPF() {
+        return CPF;
     }
 
-    public void setCNPJ(String CNPJ) throws IllegalArgumentException {
-        int TAM_CNPJ = 14;
+    public void setCPF(String CPF) throws IllegalArgumentException {
+        int TAM_CPF = 11;
         if (CNPJ == null) {
-            throw new IllegalArgumentException("CNPJ não pode ser vazio.");
+            throw new IllegalArgumentException("CPF não pode ser vazio.");
         }
-        else if (CNPJ.length() < TAM_CNPJ)
+        else if (CPF.length() < TAM_CPF)
         {
-            throw new IllegalArgumentException("CNPJ muito curto.");
+            throw new IllegalArgumentException("CPF muito curto.");
         }
-        this.CNPJ = CNPJ;
+        this.CPF = CPF;
     }
 
     public String getEndereco() {
