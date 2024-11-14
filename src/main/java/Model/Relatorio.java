@@ -5,12 +5,21 @@ import java.util.List;
 
 public class Relatorio
 {
+    private int codigo;
     private Date dataInicio;
     private Date dataFim;
 
-    public Relatorio(Date dataInicio, Date dataFim) {
+    public Relatorio(int codigo, Date dataInicio, Date dataFim) {
         setDataInicio(dataInicio);
         setDataFim(dataFim);
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public Date getDataInicio() {
@@ -30,6 +39,7 @@ public class Relatorio
     }
 
     public void gerarRelatorioVendas(/*List<Venda> vendas*/) {
+//        int totalVendas = 0;
 //        System.out.println("Relatório de Vendas de " + dataInicio + " a " + dataFim);
 //
 //        System.out.println("Total das Vendas: " + totalVendas);
@@ -41,6 +51,7 @@ public class Relatorio
     }
 
     public void gerarRelatorioCompras(/*List<Compra> compras*/) {
+//        int totalCompras = 0;
 //        System.out.println("Relatório de Compras de " + dataInicio + " a " + dataFim);
 //
 //        System.out.println("Total das Compras: " + totalCompras);
