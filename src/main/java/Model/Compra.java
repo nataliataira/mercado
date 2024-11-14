@@ -81,7 +81,7 @@ public class Compra {
         this.fornecedor = fornecedor;
     }
 
-    public void realizarCompra(Estoque estoque) {
+    public void realizarCompra() {
         //
     }
 }

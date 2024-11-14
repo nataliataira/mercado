@@ -40,6 +40,6 @@ public class Gestor extends Funcionario {
 
     public void realizarCompra(List<Item> itensCompra)
     {
-        Compra compra = new Compra();
+//        Compra compra = new Compra();
     }
 }
