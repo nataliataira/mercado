@@ -4,11 +4,17 @@ public class Produto {
     private String codigoBarras;
     private String nome;
     private String categoria;
+    private String descricao;
+    private Fornecedor fornecedor;
+    private int nivelMinEstoque;
+    private int nivelMaxEstoque;
 
-    public Produto(String codigoBarras, String nome, String categoria) throws IllegalArgumentException {
+    public Produto(String codigoBarras, String nome, String categoria, String descricao, Fornecedor fornecedor) throws IllegalArgumentException {
         setCodigoBarras(codigoBarras);
         setNome(nome);
         setCategoria(categoria);
+        setDescricao(descricao);
+        setFornecedor(fornecedor);
     }
 
     public String getCodigoBarras() {
@@ -44,11 +50,29 @@ public class Produto {
         this.categoria = categoria;
     }
 
-    public void quantidadeCompra() {
-        //
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void quantidadeVenda() {
+    public void setDescricao(String descricao) throws IllegalArgumentException {
+        if (descricao == null)
+            throw new IllegalArgumentException("A descricao do produto não pode estar vazia.");
+
+        this.descricao = descricao;
+    }
+
+    public Fornecedor getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(Fornecedor fornecedor) throws IllegalArgumentException {
+        if (fornecedor == null)
+            throw new IllegalArgumentException("O fornecedor do produto deve ser preechido.");
+
+        this.fornecedor = fornecedor;
+    }
+
+    public void verificarNivelEstoque() {
         //
     }
 }
