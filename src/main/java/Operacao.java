@@ -1,13 +1,17 @@
 import java.util.List;
+import java.util.Date;
 
 public abstract class Operacao {
     private int codigo;
     private List<Item> itens;
     private double valorTotal;
     private int quantidade;
+    private Date data;
+    private String metodoPagamento;
 
-    public Operacao(List<Item> itens) throws IllegalArgumentException {
+    public Operacao(List<Item> itens, Date data) throws IllegalArgumentException {
         setItens(itens);
+        setData(data);
     }
 
     public int getCodigo() {
@@ -52,5 +56,29 @@ public abstract class Operacao {
             throw new IllegalArgumentException("A quantidade deve ser maior que zero.");
 
         this.quantidade = quantidade;
+    }
+
+    public Date getData() {
+        return new Date(data.getTime());
+    }
+
+    public void setData(Date data) {
+        this.data = new Date();
+    }
+
+    public String getMetodoPagamento() {
+        return metodoPagamento;
+    }
+
+    public void setMetodoPagamento(String metodoPagamento) throws IllegalArgumentException {
+        if (metodoPagamento == null)
+            throw new IllegalArgumentException("O método de pagamento não pode estar vazio.");
+
+        if (!metodoPagamento.equalsIgnoreCase("dinheiro") &&
+                !metodoPagamento.equalsIgnoreCase("cartão") &&
+                !metodoPagamento.equalsIgnoreCase("pix"))
+            throw new IllegalArgumentException("Método de pagamento inválido. Use dinheiro, cartão ou pix.");
+
+        this.metodoPagamento = metodoPagamento;
     }
 }

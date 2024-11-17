@@ -4,6 +4,7 @@ public class Produto {
     private String categoria;
     private String descricao;
     private Fornecedor fornecedor;
+    private int quantidadeEstoque;
     private int nivelMinEstoque;
     private int nivelMaxEstoque;
 
@@ -68,6 +69,30 @@ public class Produto {
             throw new IllegalArgumentException("O fornecedor do produto deve ser preechido.");
 
         this.fornecedor = fornecedor;
+    }
+
+    public int getQuantidadeEstoque() {
+        return quantidadeEstoque;
+    }
+
+    public void setQuantidadeEstoque(int quantidadeEstoque) {
+        this.quantidadeEstoque = quantidadeEstoque;
+    }
+
+    public int getNivelMinEstoque() {
+        return nivelMinEstoque;
+    }
+
+    public void setNivelMinEstoque(int nivelMinEstoque) {
+        this.nivelMinEstoque = nivelMinEstoque;
+    }
+
+    public int getNivelMaxEstoque() {
+        return nivelMaxEstoque;
+    }
+
+    public void setNivelMaxEstoque(int nivelMaxEstoque) {
+        this.nivelMaxEstoque = nivelMaxEstoque;
     }
 
     public void verificarNivelEstoque() {
