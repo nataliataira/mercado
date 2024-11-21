@@ -3,7 +3,7 @@ public class Item {
     private int quantidade;
     private double valorPraticado;
 
-    public Item(Produto produto, int quantidade, double valorPraticado) {
+    public Item(Produto produto, int quantidade, double valorPraticado) throws IllegalArgumentException {
         setProduto(produto);
         setQuantidade(quantidade);
         setValorPraticado(valorPraticado);
@@ -21,7 +21,10 @@ public class Item {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(int quantidade) throws IllegalArgumentException {
+        if (quantidade < 0) {
+            throw new IllegalArgumentException("Quantidade deve ser positiva.");
+        }
         this.quantidade = quantidade;
     }
 
@@ -29,7 +32,15 @@ public class Item {
         return valorPraticado;
     }
 
-    public void setValorPraticado(double valorPraticado) {
+    public void setValorPraticado(double valorPraticado) throws IllegalArgumentException {
+        if (valorPraticado < 0) {
+            throw new IllegalArgumentException("Valor praticado deve ser positivo.");
+        }
         this.valorPraticado = valorPraticado;
+    }
+
+    public Double calcularValorTotal()
+    {
+        return quantidade * valorPraticado;
     }
 }
