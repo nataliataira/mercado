@@ -20,7 +20,17 @@ public class Gestor extends Funcionario {
 
     public void realizarCompra(Fornecedor fornecedor, List<Item> itens, String metodoPagamento)
     {
+        double valorTotal;
         Compra compra = new Compra(fornecedor, itens, new Date(), metodoPagamento);
+
+        valorTotal = compra.totalOperacao();
+        System.out.println("Compra realizada com sucesso!");
+        System.out.println("Fornecedor: " + fornecedor.getNome());
+        System.out.println("Itens comprados: ");
+        for (Item item : itens) {
+            System.out.println("- " + item.getProduto().getNome() + ": " + item.getQuantidade() + " unidades.");
+        }
+        System.out.println("Valor total da compra: R$" + valorTotal);
     }
 
     public void gerarRelatorioVendas(List<String> vendasView) {
