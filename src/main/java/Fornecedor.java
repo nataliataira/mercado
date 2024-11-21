@@ -1,8 +1,4 @@
 import java.util.List;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class Fornecedor {
     private int codigo;
@@ -28,7 +24,6 @@ public class Fornecedor {
     public void setCodigo(int codigo) throws IllegalArgumentException {
         if (codigo < 0)
             throw new IllegalArgumentException("O código não pode ter valor negativo.");
-
         this.codigo = codigo;
     }
 
@@ -39,7 +34,6 @@ public class Fornecedor {
     public void setNome(String nome) throws IllegalArgumentException {
         if (nome == null)
             throw new IllegalArgumentException("O nome não pode estar vazio.");
-
         this.nome = nome;
     }
 
@@ -49,7 +43,6 @@ public class Fornecedor {
 
     public void setCnpj(String cnpj) throws IllegalArgumentException {
         int TAM_CNPJ = 14;
-
         if (cnpj == null)
             throw new IllegalArgumentException("CNPJ não pode ser vazio.");
         else if (cnpj.length() < TAM_CNPJ)
@@ -100,41 +93,25 @@ public class Fornecedor {
         setEmail(email);
     }
 
-    public void consultarCompras(String nomeFornecedor) {
-        String consultaSQL = """
-        SELECT c.data, p.nome AS produto, c.valor_total
-        FROM compras c
-        JOIN produtos p ON c.produto_id = p.id
-        JOIN fornecedores f ON p.fornecedor_id = f.id
-        WHERE f.nome = ?
-    """;
+    public void editarFornecedor(int codigo, String novoNome, String novoEndereco, String novoTelefone, String novoEmail) throws IllegalArgumentException
+    {
+        if (codigo < 0) {
+            throw new IllegalArgumentException("Fornecedor não encontrado.");
+        }
+        setNome(novoNome);
+        setEndereco(novoEndereco);
+        setTelefone(novoTelefone);
+        setEmail(novoEmail);
+    }
 
-        try (Connection conexao = ConexaoMySQL.getConexao();
-             PreparedStatement stmt = conexao.prepareStatement(consultaSQL)) {
-
-            stmt.setString(1, nomeFornecedor);
-
-            try (ResultSet resultado = stmt.executeQuery()) {
-                System.out.println("Compras realizadas de " + nomeFornecedor);
-
-                int totalCompras = 0;
-                while (resultado.next()) {
-                    String dataCompra = resultado.getString("data");
-                    String nomeProduto = resultado.getString("produto");
-                    double valorTotal = resultado.getDouble("valor_total");
-
-                    System.out.println("Compra feita em: " + dataCompra);
-                    System.out.println("Produto: " + nomeProduto);
-                    System.out.println("Valor total: R$" + valorTotal);
-                    System.out.println("-----------------------------");
-
-                    totalCompras++;
-                }
-
-                System.out.println("Total de compras: " + totalCompras);
+    public void consultarCompras(List<String> comprasView) {
+        if (comprasView == null || comprasView.isEmpty()) {
+            System.out.println("Nenhuma compra registrada para este fornecedor.");
+        } else {
+            System.out.println("Compras registradas para este fornecedor:");
+            for (String compra : comprasView) {
+                System.out.println(compra);
             }
-        } catch (SQLException e) {
-            System.err.println("Erro ao consultar as compras: " + e.getMessage());
         }
     }
 }
