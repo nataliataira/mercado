@@ -2,19 +2,8 @@ import java.util.Date;
 import java.util.List;
 
 public class Compra extends Operacao {
-    private Date dataCompra;
-
-    public Compra(List<Item> itens, Date dataCompra) throws IllegalArgumentException {
-        super(itens);
-        setDataCompra(dataCompra);
-    }
-
-    public Date getDataCompra() {
-        return new Date(dataCompra.getTime());
-    }
-
-    public void setDataCompra(Date dataCompra) {
-        this.dataCompra = new Date();
+    public Compra(List<Item> itens, Date data) throws IllegalArgumentException {
+        super(itens, data);
     }
 
     public void realizarCompra() {
