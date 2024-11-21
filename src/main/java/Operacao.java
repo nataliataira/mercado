@@ -9,9 +9,10 @@ public abstract class Operacao {
     private Date data;
     private String metodoPagamento;
 
-    public Operacao(List<Item> itens, Date data) throws IllegalArgumentException {
+    public Operacao(List<Item> itens, Date data, String metodoPagamento) throws IllegalArgumentException {
         setItens(itens);
         setData(data);
+        setMetodoPagamento(metodoPagamento);
     }
 
     public int getCodigo() {
@@ -21,7 +22,6 @@ public abstract class Operacao {
     public void setCodigo(int codigo) throws IllegalArgumentException {
         if (codigo < 0)
             throw new IllegalArgumentException("O código não pode ter valor negativo.");
-
         this.codigo = codigo;
     }
 
@@ -32,7 +32,6 @@ public abstract class Operacao {
     public void setItens(List<Item> itens) throws IllegalArgumentException {
         if (itens == null)
             throw new IllegalArgumentException("A lista de itens não pode estar vazia.");
-
         this.itens = itens;
     }
 
@@ -43,7 +42,6 @@ public abstract class Operacao {
     public void setValorTotal(double valorTotal) throws IllegalArgumentException {
         if (valorTotal < 0)
             throw new IllegalArgumentException("O valor total não pode ser negativo.");
-
         this.valorTotal = valorTotal;
     }
 
@@ -54,7 +52,6 @@ public abstract class Operacao {
     public void setQuantidade(int quantidade) throws IllegalArgumentException {
         if (quantidade < 1)
             throw new IllegalArgumentException("A quantidade deve ser maior que zero.");
-
         this.quantidade = quantidade;
     }
 
@@ -73,12 +70,18 @@ public abstract class Operacao {
     public void setMetodoPagamento(String metodoPagamento) throws IllegalArgumentException {
         if (metodoPagamento == null)
             throw new IllegalArgumentException("O método de pagamento não pode estar vazio.");
-
         if (!metodoPagamento.equalsIgnoreCase("dinheiro") &&
                 !metodoPagamento.equalsIgnoreCase("cartão") &&
                 !metodoPagamento.equalsIgnoreCase("pix"))
             throw new IllegalArgumentException("Método de pagamento inválido. Use dinheiro, cartão ou pix.");
-
         this.metodoPagamento = metodoPagamento;
+    }
+
+    public double totalOperacao() {
+        double total = 0;
+        for (Item item : itens) {
+            total += item.calcularValorTotal();
+        }
+        return total;
     }
 }
