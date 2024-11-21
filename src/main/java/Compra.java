@@ -4,8 +4,8 @@ import java.util.List;
 public class Compra extends Operacao {
     private Fornecedor fornecedor;
 
-    public Compra(Fornecedor fornecedor, List<Item> itens, Date data) throws IllegalArgumentException {
-        super(itens, data);
+    public Compra(Fornecedor fornecedor, List<Item> itens, Date data, String metodoPagamento) throws IllegalArgumentException {
+        super(itens, data, metodoPagamento);
         setFornecedor(fornecedor);
     }
 
