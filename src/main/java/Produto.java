@@ -105,11 +105,11 @@ public class Produto {
         this.nivelMaxEstoque = nivelMaxEstoque;
     }
 
-    public void atualizaQuantidade(int quantidadeAlteracao) throws Exception
+    public void atualizaQuantidade(int quantidadeAlteracao) throws IllegalArgumentException
     {
         int novaQuantidade = getQuantidadeEstoque() + quantidadeAlteracao;
         if (novaQuantidade < 1)
-            throw new Exception("Não é possível reduzir a quantidade abaixo de zero.");
+            throw new IllegalArgumentException("Não é possível reduzir a quantidade abaixo de zero.");
         setQuantidadeEstoque(novaQuantidade);
         System.out.println("Quantidade atualizada! Nova quantidade: " + getQuantidadeEstoque());
     }
