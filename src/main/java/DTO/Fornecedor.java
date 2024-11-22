@@ -98,7 +98,7 @@ public class Fornecedor {
     public void editarFornecedor(int codigo, String novoNome, String novoEndereco, String novoTelefone, String novoEmail) throws IllegalArgumentException
     {
         if (codigo < 0) {
-            throw new IllegalArgumentException("DTO.Fornecedor não encontrado.");
+            throw new IllegalArgumentException("Fornecedor não encontrado.");
         }
         setNome(novoNome);
         setEndereco(novoEndereco);

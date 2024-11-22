@@ -27,7 +27,7 @@ public class Gestor extends Funcionario {
 
         valorTotal = compra.totalOperacao();
         System.out.println("Compra realizada com sucesso!");
-        System.out.println("DTO.Fornecedor: " + fornecedor.getNome());
+        System.out.println("Fornecedor: " + fornecedor.getNome());
         System.out.println("Itens comprados: ");
         for (Item item : itens) {
             System.out.println("- " + item.getProduto().getNome() + ": " + item.getQuantidade() + " unidades.");

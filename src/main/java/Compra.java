@@ -22,7 +22,7 @@ public class Compra extends Operacao {
     public void realizarCompra() throws IllegalArgumentException {
         Produto produto;
         if (fornecedor == null)
-            throw new IllegalArgumentException("DTO.Fornecedor inválido.");
+            throw new IllegalArgumentException("Fornecedor inválido.");
         else if (getItens() == null || getItens().isEmpty())
             throw new IllegalArgumentException("Lista de itens da compra está vazia!");
         for (Item item : getItens()) {
@@ -34,7 +34,7 @@ public class Compra extends Operacao {
         }
 //        // Prints para mostrar pro usuário
 //        System.out.println("Compra realizada com sucesso!");
-//        System.out.println("DTO.Fornecedor: " + fornecedor.getNome());
+//        System.out.println("Fornecedor: " + fornecedor.getNome());
 //        System.out.println("Itens comprados: ");
 //        for (Item item : getItens()) {
 //            System.out.println("- " + item.getProduto().getNome() + ": " + item.getQuantidade() + " unidades.");
