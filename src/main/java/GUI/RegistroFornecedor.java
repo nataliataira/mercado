@@ -282,7 +282,7 @@ public class RegistroFornecedor extends JFrameFormat {
     }
 
     public void gestionarClick(ActionEvent e) {
-        new GestionarFornecedor();
+        new GestaoFornecedor();
 
         this.setVisible(false);
     }
