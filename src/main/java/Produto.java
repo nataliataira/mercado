@@ -1,3 +1,5 @@
+import DTO.Fornecedor;
+
 public class Produto {
     private int codigo;
     private String codigoBarras;
