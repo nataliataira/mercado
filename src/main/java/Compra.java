@@ -1,5 +1,4 @@
 import DTO.Fornecedor;
-
 import java.util.Date;
 import java.util.List;
 
@@ -32,13 +31,13 @@ public class Compra extends Operacao {
             }
             produto.atualizaQuantidade(item.getQuantidade());
         }
-//        // Prints para mostrar pro usuário
-//        System.out.println("Compra realizada com sucesso!");
-//        System.out.println("Fornecedor: " + fornecedor.getNome());
-//        System.out.println("Itens comprados: ");
-//        for (Item item : getItens()) {
-//            System.out.println("- " + item.getProduto().getNome() + ": " + item.getQuantidade() + " unidades.");
-//        }
-//        System.out.println("Valor total da compra: R$" + getValorTotal());
+
+        System.out.println("Compra realizada com sucesso!");
+        System.out.println("Fornecedor: " + fornecedor.getNome());
+        System.out.println("Itens comprados: ");
+        for (Item item : getItens()) {
+            System.out.println("- " + item.getProduto().getNome() + ": " + item.getQuantidade() + " unidades.");
+        }
+        System.out.println("Valor total da compra: R$" + getValorTotal());
     }
 }

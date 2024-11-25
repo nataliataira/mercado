@@ -1,5 +1,4 @@
 package DTO;
-
 import java.util.List;
 
 public class Fornecedor {
@@ -10,7 +9,14 @@ public class Fornecedor {
     private String telefone;
     private String email;
 
-    public Fornecedor() {}
+    public Fornecedor(String nome, String cnpj, String endereco, String telefone, String email) {
+        setNome(nome);
+        setCnpj(cnpj);
+        setEndereco(endereco);
+        setTelefone(telefone);
+        setEmail(email);
+    }
+
     public Fornecedor(int codigo, String nome, String cnpj, String endereco, String telefone, String email) throws IllegalArgumentException {
         setCodigo(codigo);
         setNome(nome);

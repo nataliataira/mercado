@@ -1,14 +1,15 @@
 import java.sql.*;
+import DTO.Fornecedor;
 
 public class FornecedorDAO {
     private final ConexaoMySQL conexao = new ConexaoMySQL();
 
     public FornecedorDAO() throws SQLException {
         String sql = "create table if not exists fornecedor(id_fornecedor int, "
-                + "nome varchar(255) not null"
-                + "cnpj varchar(14) not null unique"
-                + "telefone varchar(20)"
-                + "email varchar(255)"
+                + "nome varchar(255) not null,"
+                + "cnpj varchar(14) not null unique,"
+                + "telefone varchar(20),"
+                + "email varchar(255),"
                 + "endereco varchar(255)";
         try {
             if (this.conexao.conectar()) {
@@ -26,16 +27,23 @@ public class FornecedorDAO {
     }
 
     public int inserirFornecedor(Fornecedor fornecedor) throws SQLException {
-        String sql = "inser into fornecedor (id_fornecedor,nome, cnpj, telefone, email, endereco) " +
-                "values (?, ?, ?, ?, ?, ?)";
-        PreparedStatement stmt = conexao.prepareStatement(sql);
+        int linhasInseridas = 0;
+        String sql = "inser into fornecedor (nome, cnpj, telefone, email, endereco) " +
+                "values (?, ?, ?, ?, ?)";
+        PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         try {
-            stmt.setInt(1, fornecedor.getCodigo());
-            stmt.setString(2, fornecedor.getNome());
-            stmt.setString(3, fornecedor.getCnpj());
-            stmt.setString(4, fornecedor.getTelefone());
-            stmt.setString(5, fornecedor.getEmail());
-            stmt.setString(6, fornecedor.getEndereco());
+            stmt.setString(1, fornecedor.getNome());
+            stmt.setString(2, fornecedor.getCnpj());
+            stmt.setString(3, fornecedor.getTelefone());
+            stmt.setString(4, fornecedor.getEmail());
+            stmt.setString(5, fornecedor.getEndereco());
+            linhasInseridas = stmt.executeUpdate();
+            if (linhasInseridas > 0) {
+                ResultSet generatedKeys = stmt.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    fornecedor.setCodigo(generatedKeys.getInt(1));
+                }
+            }
             return stmt.executeUpdate();
         }
         catch (SQLException err) {
