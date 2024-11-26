@@ -23,21 +23,41 @@ public class Mercado {
                     "faleconosco@atacadao.com.br");
 
             // Produto
-            Produto produtoA = new Produto("10001",
+            Produto prodMorango = new Produto("10001",
                     "Morango",
                     "Frutas",
                     "Bandeja 300g Morango",
                     fornecedorA);
-            produtoA.setNivelMinEstoque(5);
-            produtoA.setNivelMaxEstoque(10);
+            prodMorango.setNivelMinEstoque(5);
+            prodMorango.setNivelMaxEstoque(10);
+            prodMorango.setQuantidadeEstoque(0);
 
-            Produto produtoB = new Produto("10002",
+            Produto prodMaca = new Produto("10002",
+                    "Maça Fuji",
+                    "Frutas",
+                    "0,600gr / aprox: 5 unidades",
+                    fornecedorA);
+            prodMaca.setNivelMinEstoque(5);
+            prodMaca.setNivelMaxEstoque(30);
+            prodMaca.setQuantidadeEstoque(0);
+
+            Produto prodDeso = new Produto("10003",
                     "Desodorante Antitranspirante",
                     "Produtos de Higiene",
                     "Proporciona proteção desodorante por 48 horas e evita manchas em roupas claras e escuras.",
                     fornecedorB);
-            produtoB.setNivelMinEstoque(10);
-            produtoB.setNivelMaxEstoque(30);
+            prodDeso.setNivelMinEstoque(10);
+            prodDeso.setNivelMaxEstoque(50);
+            prodDeso.setQuantidadeEstoque(0);
+
+            Produto prodSabonete = new Produto("10004",
+                    "Sabonete Líquido Hidratante",
+                    "Produtos de Higiene",
+                    "Desfrute de uma limpeza suave, fragrância luxuosa e um ritual de cuidados que eleva sua rotina de beleza a um novo patamar",
+                    fornecedorB);
+            prodSabonete.setNivelMinEstoque(10);
+            prodSabonete.setNivelMaxEstoque(20);
+            prodSabonete.setQuantidadeEstoque(0);
 
             // Gestor
             Gestor gst = new Gestor(1,
@@ -51,23 +71,34 @@ public class Mercado {
                     "(11) 98864-1231",
                     "p_souzak@ig.com.br");
 
-            gst.consultarDados();
+//            gst.consultarDados();
+
+            //Teste estoque
+            System.out.println("Antes da Compra");
+            System.out.println("Estoque Morango: "+prodMorango.getQuantidadeEstoque());
+            System.out.println("Estoque Maça: "+prodMaca.getQuantidadeEstoque());
 
             // Compra 1
             // Lista de Compras
-            Item itemC11 = new Item(produtoA, 10, 5.0);
-            Item itemC12 = new Item(produtoB, 5, 10.0);
-            List<Item> itensCompra1 = Arrays.asList(itemC11, itemC12);
+            Item itemComp01 = new Item(prodMorango, 10, 5.0);
+            Item itemComp02 = new Item(prodMaca, 10, 3.5);
+            List<Item> itensCompra1 = Arrays.asList(itemComp01, itemComp02);
             // Nova Compra
             gst.realizarCompra(fornecedorA, itensCompra1, "cartão");
 
+            //Teste estoque
+            System.out.println("Depois da Compra");
+            System.out.println("Estoque Morango: "+prodMorango.getQuantidadeEstoque());
+            System.out.println("Estoque Maça: "+prodMaca.getQuantidadeEstoque());
+
+
             // Compra 2
             // Lista de Compras
-            Item itemC21 = new Item(produtoA, 10, 5.0);
-            Item item22 = new Item(produtoB, 5, 10.0);
-            List<Item> itensCompra2 = Arrays.asList(itemC21, item22);
+            Item itemComp03 = new Item(prodDeso, 20, 5.0);
+            Item itemComp04 = new Item(prodSabonete, 5, 10.0);
+            List<Item> itensCompra2 = Arrays.asList(itemComp03, itemComp04);
             // Nova Compra
-            gst.realizarCompra(fornecedorA, itensCompra2, "Cartão");
+            gst.realizarCompra(fornecedorB, itensCompra2, "Cartão");
 
             // Op. Caixa
             OperadorDeCaixa op = new OperadorDeCaixa(1,
@@ -81,14 +112,22 @@ public class Mercado {
                     "(11) 98864-1231",
                     "paula22_souzak@ig.com.br");
 
-            op.consultarDados();
+//            op.consultarDados();
 
-            // Lista de Venda
-            Item vendaItem1 = new Item(produtoA, 2, 5.0);
-            Item vendaItem2 = new Item(produtoB, 1, 14.50);
-            List<Item> itensVenda = Arrays.asList(vendaItem1, vendaItem2);
+            // Venda com sucesso
+            Item vendaItem1 = new Item(prodMorango, 1, 9.5);
+            Item vendaItem2 = new Item(prodDeso, 1, 14.50);
+            List<Item> itensVenda1 = Arrays.asList(vendaItem1, vendaItem2);
             // Nova Venda
-            op.realizarVenda(itensVenda, "pix");
+            op.realizarVenda(itensVenda1, "pix");
+
+            // Venda com mais produtos que o estoque tem
+            Item vendaItem3 = new Item(prodMorango, 400, 9.5);
+            Item vendaItem4 = new Item(prodDeso, 1, 14.50);
+            List<Item> itensVenda2 = Arrays.asList(vendaItem3, vendaItem4);
+            // Nova Venda
+            op.realizarVenda(itensVenda2, "pix");
+
         }
         catch (Exception err) {
             System.err.println(err.getMessage());

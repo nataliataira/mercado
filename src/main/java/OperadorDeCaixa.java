@@ -20,12 +20,6 @@ public class OperadorDeCaixa extends Funcionario {
     {
         double valorTotal;
         Venda venda = new Venda(itens, new Date(), metodoPagamento);
-        valorTotal = venda.totalOperacao();
-        System.out.println("Venda realizada com sucesso!");
-        System.out.println("Itens comprados: ");
-        for (Item item : itens) {
-            System.out.println("- " + item.getProduto().getNome() + ": " + item.getQuantidade() + " unidades.");
-        }
-        System.out.println("Valor total da compra: R$" + valorTotal);
+        venda.realizarVenda();
     }
 }

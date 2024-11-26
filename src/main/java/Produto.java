@@ -110,9 +110,9 @@ public class Produto {
     public void atualizaQuantidade(int quantidadeAlteracao) throws IllegalArgumentException
     {
         int novaQuantidade = getQuantidadeEstoque() + quantidadeAlteracao;
-        if (novaQuantidade < 1)
-            throw new IllegalArgumentException("Não é possível reduzir a quantidade abaixo de zero.");
+        if (novaQuantidade < 0) {
+            throw new IllegalArgumentException("Quantidade não pode ser negativa.");
+        }
         setQuantidadeEstoque(novaQuantidade);
-        System.out.println("Quantidade atualizada! Nova quantidade: " + getQuantidadeEstoque());
     }
 }

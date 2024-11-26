@@ -39,7 +39,7 @@ public class Compra extends Operacao {
         for (Item item : getItens()) {
             System.out.println("- " + item.getProduto().getNome() + ": " + item.getQuantidade() + " unidades.");
         }
-        System.out.println("Valor total da compra: R$" + getValorTotal());
+        System.out.println("Valor total da compra: R$" + totalOperacao());
         System.out.println("");
     }
 }
