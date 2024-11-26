@@ -1,4 +1,4 @@
-import GUI.RegistroFornecedor;
+import GUI.CadastroFornecedor;
 import DTO.Fornecedor;
 
 import java.util.Arrays;
@@ -7,7 +7,7 @@ import java.util.List;
 public class Mercado {
     public static void main(String[] args) {
         try {
-//            new RegistroFornecedor();
+//            new CadastroFornecedor();
 
             // Fornecedor
             Fornecedor fornecedorA = new Fornecedor("CEAGESP",

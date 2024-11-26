@@ -117,6 +117,7 @@ public class GestaoFornecedor extends JFrameFormat {
         btnConsultar.setText("Consultar");
         btnConsultar.setFont(new Font("Comic Sans", Font.BOLD, 18));
         btnConsultar.setFocusable(false);
+        btnConsultar.addActionListener(this::consultarClick);
 
         btnDeletar = new JButton();
 
@@ -127,6 +128,7 @@ public class GestaoFornecedor extends JFrameFormat {
         btnDeletar.setText("Deletar");
         btnDeletar.setFont(new Font("Comic Sans", Font.BOLD, 18));
         btnDeletar.setFocusable(false);
+        btnDeletar.addActionListener(this::deletarClick);
 
         codigoContainer.add(itemCod);
         codigoContainer.add(btnConsultar);
@@ -198,6 +200,7 @@ public class GestaoFornecedor extends JFrameFormat {
         btnAlterar.setText("Alterar Dados");
         btnAlterar.setFont(new Font("Comic Sans", Font.BOLD, 18));
         btnAlterar.setFocusable(false);
+        btnAlterar.addActionListener(this::atualizarClick);
 
         btnVoltar = new JButton();
 
@@ -293,7 +296,7 @@ public class GestaoFornecedor extends JFrameFormat {
     }
 
     public void voltarClick(ActionEvent e) {
-        new RegistroFornecedor();
+        new CadastroFornecedor();
 
         this.setVisible(false);
     }
@@ -337,6 +340,8 @@ public class GestaoFornecedor extends JFrameFormat {
 //                jLabel1.setText("Ocorreu um erro");
             }
 
+            this.limparTextFields();
+
         } catch (SQLException err) {
             System.err.println(err.getMessage());
         }
@@ -365,6 +370,8 @@ public class GestaoFornecedor extends JFrameFormat {
             } else {
 //                jLabel1.setText("Ocorreu um erro");
             }
+
+            this.limparTextFields();
 
         } catch (SQLException err) {
             System.err.println(err.getMessage());
