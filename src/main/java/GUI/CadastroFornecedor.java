@@ -1,11 +1,13 @@
 package GUI;
+import DAO.FornecedorDAO;
 import DTO.Fornecedor;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
+import java.util.Objects;
 
-public class RegistroFornecedor extends JFrameFormat {
-    private JTextField txtCodigo;
+public class CadastroFornecedor extends JFrameFormat {
     private JTextField txtNome;
     private JTextField txtEmail;
     private JTextField txtTelefone;
@@ -14,8 +16,8 @@ public class RegistroFornecedor extends JFrameFormat {
     private JButton btnConfirmar;
     private JButton btnGestionar;
 
-    public RegistroFornecedor() {
-        setTitle("Registro de Fornecedores");
+    public CadastroFornecedor() {
+        setTitle("Cadastro de Fornecedores");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setSize(960, 895);
@@ -94,7 +96,7 @@ public class RegistroFornecedor extends JFrameFormat {
 
         JLabel texto3 = new JLabel();
 
-        texto3.setText("Fornecedores registrados.");
+        texto3.setText("Fornecedores cadastrados.");
         texto3.setBounds(40, 280, 300, 55);
         texto3.setForeground(new Color(0xffffff));
         texto3.setFont(new Font("Comic Sans", Font.PLAIN, 18));
@@ -129,7 +131,7 @@ public class RegistroFornecedor extends JFrameFormat {
 
         JLabel h2 = new JLabel();
 
-        h2.setText("Registrar");
+        h2.setText("Cadastrar");
         h2.setVerticalAlignment(JLabel.CENTER);
         h2.setHorizontalAlignment(JLabel.CENTER);
         h2.setBorder(BorderFactory.createCompoundBorder(
@@ -137,19 +139,10 @@ public class RegistroFornecedor extends JFrameFormat {
                 BorderFactory.createEmptyBorder(40, 0, 10, 0)));
 
         int registroWidth = registroContainer.getPreferredSize().width;
-        h2.setPreferredSize(new Dimension(registroWidth - 70, 70));
+        h2.setPreferredSize(new Dimension(registroWidth - 70, 100));
 
         h2.setForeground(new Color(0x164e63));
         h2.setFont(new Font("Comic Sans", Font.BOLD, 24));
-
-        JPanel itemCod = new JPanel();
-        this.formatarItemRegistro(itemCod, registroWidth - 70);
-
-        JLabel labelCodigo = new JLabel();
-        this.formatarLabel(labelCodigo, "Código", "codigo");
-
-        txtCodigo = new JTextField();
-        this.formatarTextField(txtCodigo);
 
         JPanel item1 = new JPanel();
         this.formatarItemRegistro(item1, registroWidth - 70);
@@ -201,8 +194,6 @@ public class RegistroFornecedor extends JFrameFormat {
         itemGrid.setLayout(new GridLayout(1, 2, 8, 0));
         itemGrid.setPreferredSize(new Dimension(registroWidth - 70, 70));
 
-        itemCod.add(labelCodigo);
-        itemCod.add(txtCodigo);
         item1.add(labelNome);
         item1.add(txtNome);
         item2.add(labelEmail);
@@ -232,7 +223,6 @@ public class RegistroFornecedor extends JFrameFormat {
         espaco.setPreferredSize(new Dimension(registroWidth - 70, 10));
 
         registroContainer.add(h2);
-        registroContainer.add(itemCod);
         registroContainer.add(item1);
         registroContainer.add(item2);
         registroContainer.add(itemGrid);
@@ -267,18 +257,33 @@ public class RegistroFornecedor extends JFrameFormat {
     }
 
     public void confirmarClick(ActionEvent e) {
-        String intCodigo = txtCodigo.getText();
-        int codigo = Integer.parseInt(intCodigo);
+        Fornecedor novoFornecedor = new Fornecedor();
 
-        System.out.println(" " + txtCodigo.getText() + " " + txtNome.getText() + " " +
-                txtEmail.getText() + " " +  txtTelefone.getText() + " " +
-                txtCnpj.getText() + " " +  txtEndereco.getText());
+        if (Objects.equals(txtNome.getText(), "") || Objects.equals(txtCnpj.getText(), "") ||
+                Objects.equals(txtEmail.getText(), "") || Objects.equals(txtTelefone.getText(), "") ||
+                Objects.equals(txtEndereco.getText(), "")) {
+            JOptionPane.showMessageDialog(this, "Por favor, preencha os campos corretamente.", "Atenção", JOptionPane.WARNING_MESSAGE);
 
-        Fornecedor fornecedor = new Fornecedor(codigo, txtNome.getText(),
-                txtEmail.getText(), txtTelefone.getText(),
-                txtCnpj.getText(), txtEndereco.getText());
+            return;
+        }
 
-        this.limparTextFields();
+        novoFornecedor.setNome(txtNome.getText());
+        novoFornecedor.setCnpj(txtCnpj.getText());
+        novoFornecedor.setEmail(txtEmail.getText());
+        novoFornecedor.setTelefone(txtTelefone.getText());
+        novoFornecedor.setEndereco(txtEndereco.getText());
+
+        try {
+            FornecedorDAO dao = new FornecedorDAO();
+
+            if (dao.inserirFornecedor(novoFornecedor) == 1)
+                this.limparTextFields();
+
+            JOptionPane.showMessageDialog(this, "Fornecedor cadastrado com sucesso.", "Cadastro realizado", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (SQLException err) {
+            System.err.println(err.getMessage());
+        }
     }
 
     public void gestionarClick(ActionEvent e) {
@@ -288,7 +293,6 @@ public class RegistroFornecedor extends JFrameFormat {
     }
 
     public void limparTextFields() {
-        txtCodigo.setText("");
         txtNome.setText("");
         txtEmail.setText("");
         txtTelefone.setText("");

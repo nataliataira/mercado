@@ -1,8 +1,13 @@
 package GUI;
 
+import DAO.FornecedorDAO;
+import DTO.Fornecedor;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
+import java.util.Objects;
 
 public class GestaoFornecedor extends JFrameFormat {
     private JTextField txtCodigo;
@@ -113,6 +118,7 @@ public class GestaoFornecedor extends JFrameFormat {
         btnConsultar.setText("Consultar");
         btnConsultar.setFont(new Font("Comic Sans", Font.BOLD, 18));
         btnConsultar.setFocusable(false);
+        btnConsultar.addActionListener(this::consultarClick);
 
         btnDeletar = new JButton();
 
@@ -123,6 +129,7 @@ public class GestaoFornecedor extends JFrameFormat {
         btnDeletar.setText("Deletar");
         btnDeletar.setFont(new Font("Comic Sans", Font.BOLD, 18));
         btnDeletar.setFocusable(false);
+        btnDeletar.addActionListener(this::deletarClick);
 
         codigoContainer.add(itemCod);
         codigoContainer.add(btnConsultar);
@@ -194,6 +201,7 @@ public class GestaoFornecedor extends JFrameFormat {
         btnAlterar.setText("Alterar Dados");
         btnAlterar.setFont(new Font("Comic Sans", Font.BOLD, 18));
         btnAlterar.setFocusable(false);
+        btnAlterar.addActionListener(this::atualizarClick);
 
         btnVoltar = new JButton();
 
@@ -289,9 +297,114 @@ public class GestaoFornecedor extends JFrameFormat {
     }
 
     public void voltarClick(ActionEvent e) {
-        new RegistroFornecedor();
+        new CadastroFornecedor();
 
         this.setVisible(false);
     }
 
+    public void consultarClick(ActionEvent e) {
+        if (Objects.equals(txtCodigo.getText(), "") ) {
+            JOptionPane.showMessageDialog(this, "Por favor, informe o código do funcionário.", "Atenção", JOptionPane.WARNING_MESSAGE);
+
+            return;
+        }
+
+        String intCodigo = txtCodigo.getText();
+        int codigo = Integer.parseInt(intCodigo);
+
+        try {
+            FornecedorDAO dao = new FornecedorDAO();
+            Fornecedor fornecedor = dao.buscarFornecedor(codigo);
+
+            if (fornecedor != null) {
+                txtNome.setText(fornecedor.getNome());
+                txtEmail.setText(fornecedor.getEmail());
+                txtCnpj.setText(fornecedor.getCnpj());
+                txtTelefone.setText(fornecedor.getTelefone());
+                txtEndereco.setText(fornecedor.getEndereco());
+
+                JOptionPane.showMessageDialog(this, "Fornecedor encontrado!", "Busca feita", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Fornecedor não encontrado, verifique o código novamente.", "Fornecedor desconhecido", JOptionPane.WARNING_MESSAGE);
+            }
+
+        } catch (SQLException err) {
+            System.err.println(err.getMessage());
+        }
+    }
+
+    public void deletarClick(ActionEvent e) {
+        if (Objects.equals(txtCodigo.getText(), "") ) {
+            JOptionPane.showMessageDialog(this, "Por favor, informe o código do funcionário.", "Atenção", JOptionPane.WARNING_MESSAGE);
+
+            return;
+        }
+        Fornecedor fornecedor = new Fornecedor();
+
+        String intCodigo = txtCodigo.getText();
+        int codigo = Integer.parseInt(intCodigo);
+
+        fornecedor.setCodigo(codigo);
+
+        try {
+            FornecedorDAO dao = new FornecedorDAO();
+
+            if (dao.excluirFornecedor(fornecedor) == 1){
+                JOptionPane.showMessageDialog(this, "Fornecedor excluido.", "Exclusão finalizada", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Ocorreu um erro ao excluir o fornecedor.", "Fornecedor não excluido", JOptionPane.ERROR_MESSAGE);
+            }
+
+            this.limparTextFields();
+
+        } catch (SQLException err) {
+            System.err.println(err.getMessage());
+        }
+    }
+
+    public void atualizarClick(ActionEvent e) {
+        if (Objects.equals(txtCodigo.getText(), "") ) {
+            JOptionPane.showMessageDialog(this, "Por favor, informe o código do funcionário.", "Atenção", JOptionPane.WARNING_MESSAGE);
+
+            return;
+        }
+
+        Fornecedor fornecedor = new Fornecedor();
+
+        String intCodigo = txtCodigo.getText();
+        int codigo = Integer.parseInt(intCodigo);
+
+        fornecedor.setCodigo(codigo);
+        fornecedor.setNome(txtNome.getText());
+        fornecedor.setCnpj(txtCnpj.getText());
+        fornecedor.setEmail(txtEmail.getText());
+        fornecedor.setTelefone(txtTelefone.getText());
+        fornecedor.setEndereco(txtEndereco.getText());
+
+        try {
+            FornecedorDAO dao = new FornecedorDAO();
+
+            if (dao.atualizarFornecedor(fornecedor) == 1){
+                this.limparTextFields();
+
+                JOptionPane.showMessageDialog(this, "Fornecedor atualizado com sucesso.", "Atualização feita", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Ocorreu um erro ao atualizar o fornecedor.", "Fornecedor não atualizado", JOptionPane.ERROR_MESSAGE);
+            }
+
+            this.limparTextFields();
+
+        } catch (SQLException err) {
+            System.err.println(err.getMessage());
+        }
+    }
+
+    public void limparTextFields() {
+        txtCodigo.setText("");
+        txtNome.setText("");
+        txtEmail.setText("");
+        txtTelefone.setText("");
+        txtCnpj.setText("");
+        txtEndereco.setText("");
+    }
 }
