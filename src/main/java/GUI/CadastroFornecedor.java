@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class CadastroFornecedor extends JFrameFormat {
     private JTextField txtNome;
@@ -257,6 +258,14 @@ public class CadastroFornecedor extends JFrameFormat {
 
     public void confirmarClick(ActionEvent e) {
         Fornecedor novoFornecedor = new Fornecedor();
+
+        if (Objects.equals(txtNome.getText(), "") || Objects.equals(txtCnpj.getText(), "") ||
+                Objects.equals(txtEmail.getText(), "") || Objects.equals(txtTelefone.getText(), "") ||
+                Objects.equals(txtEndereco.getText(), "")) {
+            JOptionPane.showMessageDialog(this, "Por favor, preencha os campos corretamente.", "Atenção", JOptionPane.WARNING_MESSAGE);
+
+            return;
+        }
 
         novoFornecedor.setNome(txtNome.getText());
         novoFornecedor.setCnpj(txtCnpj.getText());

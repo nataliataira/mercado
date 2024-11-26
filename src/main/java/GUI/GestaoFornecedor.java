@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class GestaoFornecedor extends JFrameFormat {
     private JTextField txtCodigo;
@@ -302,6 +303,12 @@ public class GestaoFornecedor extends JFrameFormat {
     }
 
     public void consultarClick(ActionEvent e) {
+        if (Objects.equals(txtCodigo.getText(), "") ) {
+            JOptionPane.showMessageDialog(this, "Por favor, informe o código do funcionário.", "Atenção", JOptionPane.WARNING_MESSAGE);
+
+            return;
+        }
+
         String intCodigo = txtCodigo.getText();
         int codigo = Integer.parseInt(intCodigo);
 
@@ -323,6 +330,11 @@ public class GestaoFornecedor extends JFrameFormat {
     }
 
     public void deletarClick(ActionEvent e) {
+        if (Objects.equals(txtCodigo.getText(), "") ) {
+            JOptionPane.showMessageDialog(this, "Por favor, informe o código do funcionário.", "Atenção", JOptionPane.WARNING_MESSAGE);
+
+            return;
+        }
         Fornecedor fornecedor = new Fornecedor();
 
         String intCodigo = txtCodigo.getText();
@@ -348,6 +360,12 @@ public class GestaoFornecedor extends JFrameFormat {
     }
 
     public void atualizarClick(ActionEvent e) {
+        if (Objects.equals(txtCodigo.getText(), "") ) {
+            JOptionPane.showMessageDialog(this, "Por favor, informe o código do funcionário.", "Atenção", JOptionPane.WARNING_MESSAGE);
+
+            return;
+        }
+
         Fornecedor fornecedor = new Fornecedor();
 
         String intCodigo = txtCodigo.getText();
