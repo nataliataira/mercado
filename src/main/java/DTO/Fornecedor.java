@@ -1,5 +1,4 @@
-package Model;
-
+package DTO;
 import java.util.List;
 
 public class Fornecedor {
@@ -10,8 +9,18 @@ public class Fornecedor {
     private String telefone;
     private String email;
 
+    public Fornecedor() {}
+
     public Fornecedor(int codigo, String nome, String cnpj, String endereco, String telefone, String email) throws IllegalArgumentException {
         setCodigo(codigo);
+        setNome(nome);
+        setCnpj(cnpj);
+        setEndereco(endereco);
+        setTelefone(telefone);
+        setEmail(email);
+    }
+
+    public Fornecedor(String nome, String cnpj, String endereco, String telefone, String email) throws IllegalArgumentException {
         setNome(nome);
         setCnpj(cnpj);
         setEndereco(endereco);
@@ -26,7 +35,6 @@ public class Fornecedor {
     public void setCodigo(int codigo) throws IllegalArgumentException {
         if (codigo < 0)
             throw new IllegalArgumentException("O código não pode ter valor negativo.");
-
         this.codigo = codigo;
     }
 
@@ -37,7 +45,6 @@ public class Fornecedor {
     public void setNome(String nome) throws IllegalArgumentException {
         if (nome == null)
             throw new IllegalArgumentException("O nome não pode estar vazio.");
-
         this.nome = nome;
     }
 
@@ -47,12 +54,10 @@ public class Fornecedor {
 
     public void setCnpj(String cnpj) throws IllegalArgumentException {
         int TAM_CNPJ = 14;
-
         if (cnpj == null)
             throw new IllegalArgumentException("CNPJ não pode ser vazio.");
         else if (cnpj.length() < TAM_CNPJ)
             throw new IllegalArgumentException("CNPJ muito curto.");
-
         this.cnpj = cnpj;
     }
 
@@ -63,7 +68,6 @@ public class Fornecedor {
     public void setEndereco(String endereco) throws IllegalArgumentException {
         if (endereco == null)
             throw new IllegalArgumentException("O endereço do fornecedor não pode estar vazio.");
-
         this.endereco = endereco;
     }
 
@@ -74,7 +78,6 @@ public class Fornecedor {
     public void setTelefone(String telefone) throws IllegalArgumentException {
         if (telefone == null)
             throw new IllegalArgumentException("O telefone não pode estar vazio.");
-
         this.telefone = telefone;
     }
 
@@ -83,31 +86,43 @@ public class Fornecedor {
     }
 
     public void setEmail(String email) throws IllegalArgumentException {
+        int indexArroba;
         if (email == null)
             throw new IllegalArgumentException("O email deve ser preenchido.");
 
-        int indexArroba = email.indexOf('@');
-
+        indexArroba = email.indexOf('@');
         if (!(indexArroba > 0 && indexArroba < email.length() - 1))
             throw new IllegalArgumentException("Email inválido.");
-
         this.email = email;
     }
 
-    public void registrarFornecedor() {
-        //
+    public void registrarFornecedor(String nome, String cnpj, String endereco, String telefone, String email) {
+        setNome(nome);
+        setCnpj(cnpj);
+        setEndereco(endereco);
+        setTelefone(telefone);
+        setEmail(email);
     }
 
-    public void consultarCompras(/*List<Compra> compras*/) {
-//        int totalCompras = 0;
-//        Verificar nos produtos de compras o fornecedor igual ao registrado
-//        System.out.println("Compras realizadas de " + nome);
-//
-//        Fazer Loop de compras feitas pelo fornecedor
-//        System.out.println("Compra feita em " + compra.data);
-//        System.out.println("Produto: " + compra.produto);
-//        System.out.println("Valor total: " + compra.valorTotal);
+    public void editarFornecedor(int codigo, String novoNome, String novoEndereco, String novoTelefone, String novoEmail) throws IllegalArgumentException
+    {
+        if (codigo < 0) {
+            throw new IllegalArgumentException("Fornecedor não encontrado.");
+        }
+        setNome(novoNome);
+        setEndereco(novoEndereco);
+        setTelefone(novoTelefone);
+        setEmail(novoEmail);
+    }
 
-//        System.out.println("Total de compras: " + totalCompras);
+    public void consultarCompras(List<String> comprasView) {
+        if (comprasView == null || comprasView.isEmpty()) {
+            System.out.println("Nenhuma compra registrada para este fornecedor.");
+        } else {
+            System.out.println("Compras registradas para este fornecedor:");
+            for (String compra : comprasView) {
+                System.out.println(compra);
+            }
+        }
     }
 }

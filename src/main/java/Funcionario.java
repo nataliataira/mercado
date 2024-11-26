@@ -1,5 +1,3 @@
-package Model;
-
 public abstract class Funcionario {
     private int codigo;
     private String nome;
@@ -8,10 +6,10 @@ public abstract class Funcionario {
     private String telefone;
     private String email;
 
-    public Funcionario(int codigo, String nome, String CNPJ, String endereco, String telefone, String email) throws IllegalArgumentException {
+    public Funcionario(int codigo, String nome, String CPF, String endereco, String telefone, String email) throws IllegalArgumentException {
         setCodigo(codigo);
         setNome(nome);
-        setCNPJ(CNPJ);
+        setCPF(CPF);
         setEndereco(endereco);
         setTelefone(telefone);
         setEmail(email);
@@ -41,7 +39,7 @@ public abstract class Funcionario {
 
     public void setCPF(String CPF) throws IllegalArgumentException {
         int TAM_CPF = 11;
-        if (CNPJ == null) {
+        if (CPF == null) {
             throw new IllegalArgumentException("CPF não pode ser vazio.");
         }
         else if (CPF.length() < TAM_CPF)
@@ -72,6 +70,7 @@ public abstract class Funcionario {
             throw new IllegalArgumentException("Telefone não pode ser vazio.");
         }
         else if (telefone.length() < TAM_MIN_TEL)
+            throw new IllegalArgumentException("Telefone inválido.");
         this.telefone = telefone;
     }
 
@@ -95,11 +94,13 @@ public abstract class Funcionario {
 
     public void consultarDados()
     {
+        System.out.println("");
         System.out.println("Consulta ao funcionário");
         System.out.println("nome: "+getNome());
-        System.out.println("cnpj: "+getCNPJ());
+        System.out.println("cnpj: "+getCPF());
         System.out.println("endereço : "+getEndereco());
         System.out.println("telefone : "+getTelefone());
         System.out.println("email : "+getEmail());
+        System.out.println("");
     }
 }
