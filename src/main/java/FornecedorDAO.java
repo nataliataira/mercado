@@ -10,7 +10,7 @@ public class FornecedorDAO {
                 + "cnpj varchar(14) not null unique,"
                 + "telefone varchar(20),"
                 + "email varchar(255),"
-                + "endereco varchar(255)";
+                + "endereco varchar(255))";
         try {
             if (this.conexao.conectar()) {
                 Statement stmt = this.conexao.criarStatement();
