@@ -1,8 +1,10 @@
 package GUI;
+import DAO.FornecedorDAO;
 import DTO.Fornecedor;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
 
 public class RegistroFornecedor extends JFrameFormat {
     private JTextField txtCodigo;
@@ -267,18 +269,31 @@ public class RegistroFornecedor extends JFrameFormat {
     }
 
     public void confirmarClick(ActionEvent e) {
+        Fornecedor novoFornecedor = new Fornecedor();
+
         String intCodigo = txtCodigo.getText();
         int codigo = Integer.parseInt(intCodigo);
+
+        novoFornecedor.setCodigo(codigo);
+        novoFornecedor.setNome(txtNome.getText());
+        novoFornecedor.setCnpj(txtCnpj.getText());
+        novoFornecedor.setEmail(txtEmail.getText());
+        novoFornecedor.setTelefone(txtTelefone.getText());
+        novoFornecedor.setEndereco(txtEndereco.getText());
 
         System.out.println(" " + txtCodigo.getText() + " " + txtNome.getText() + " " +
                 txtEmail.getText() + " " +  txtTelefone.getText() + " " +
                 txtCnpj.getText() + " " +  txtEndereco.getText());
 
-        Fornecedor fornecedor = new Fornecedor(codigo, txtNome.getText(),
-                txtEmail.getText(), txtTelefone.getText(),
-                txtCnpj.getText(), txtEndereco.getText());
+        try {
+            FornecedorDAO dao = new FornecedorDAO();
 
-        this.limparTextFields();
+            if (dao.inserirFornecedor(novoFornecedor) == 1)
+                this.limparTextFields();
+
+        } catch (SQLException err) {
+            System.err.println(err.getMessage());
+        }
     }
 
     public void gestionarClick(ActionEvent e) {

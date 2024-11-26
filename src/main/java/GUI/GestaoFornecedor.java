@@ -1,8 +1,12 @@
 package GUI;
 
+import DAO.FornecedorDAO;
+import DTO.Fornecedor;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.sql.SQLException;
 
 public class GestaoFornecedor extends JFrameFormat {
     private JTextField txtCodigo;
@@ -294,4 +298,85 @@ public class GestaoFornecedor extends JFrameFormat {
         this.setVisible(false);
     }
 
+    public void consultarClick(ActionEvent e) {
+        String intCodigo = txtCodigo.getText();
+        int codigo = Integer.parseInt(intCodigo);
+
+        try {
+            FornecedorDAO dao = new FornecedorDAO();
+            Fornecedor fornecedor = dao.buscarFornecedor(codigo);
+
+            if (fornecedor != null) {
+                txtNome.setText(fornecedor.getNome());
+                txtEmail.setText(fornecedor.getEmail());
+                txtCnpj.setText(fornecedor.getCnpj());
+                txtTelefone.setText(fornecedor.getTelefone());
+                txtEndereco.setText(fornecedor.getEndereco());
+            }
+
+        } catch (SQLException err) {
+            System.err.println(err.getMessage());
+        }
+    }
+
+    public void deletarClick(ActionEvent e) {
+        Fornecedor fornecedor = new Fornecedor();
+
+        String intCodigo = txtCodigo.getText();
+        int codigo = Integer.parseInt(intCodigo);
+
+        fornecedor.setCodigo(codigo);
+
+        try {
+            FornecedorDAO dao = new FornecedorDAO();
+
+            if (dao.excluirFornecedor(fornecedor) == 1){
+
+//              jLabel1.setText("Cliente removido com sucesso");
+            } else {
+//                jLabel1.setText("Ocorreu um erro");
+            }
+
+        } catch (SQLException err) {
+            System.err.println(err.getMessage());
+        }
+    }
+
+    public void atualizarClick(ActionEvent e) {
+        Fornecedor fornecedor = new Fornecedor();
+
+        String intCodigo = txtCodigo.getText();
+        int codigo = Integer.parseInt(intCodigo);
+
+        fornecedor.setCodigo(codigo);
+        fornecedor.setNome(txtNome.getText());
+        fornecedor.setCnpj(txtCnpj.getText());
+        fornecedor.setEmail(txtEmail.getText());
+        fornecedor.setTelefone(txtTelefone.getText());
+        fornecedor.setEndereco(txtEndereco.getText());
+
+        try {
+            FornecedorDAO dao = new FornecedorDAO();
+
+            if (dao.atualizarFornecedor(fornecedor) == 1){
+                this.limparTextFields();
+
+//                jLabel1.setText("Cliente alterado com sucesso");
+            } else {
+//                jLabel1.setText("Ocorreu um erro");
+            }
+
+        } catch (SQLException err) {
+            System.err.println(err.getMessage());
+        }
+    }
+
+    public void limparTextFields() {
+        txtCodigo.setText("");
+        txtNome.setText("");
+        txtEmail.setText("");
+        txtTelefone.setText("");
+        txtCnpj.setText("");
+        txtEndereco.setText("");
+    }
 }
