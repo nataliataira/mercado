@@ -5,7 +5,7 @@ public class FornecedorDAO {
     private final ConexaoMySQL conexao = new ConexaoMySQL();
 
     public FornecedorDAO() throws SQLException {
-        String sql = "create table if not exists fornecedor(id_fornecedor int, "
+        String sql = "create table if not exists fornecedor(codigo int auto_increment primary key, "
                 + "nome varchar(255) not null,"
                 + "cnpj varchar(14) not null unique,"
                 + "telefone varchar(20),"
@@ -28,7 +28,7 @@ public class FornecedorDAO {
 
     public int inserirFornecedor(Fornecedor fornecedor) throws SQLException {
         int linhasInseridas = 0;
-        String sql = "inser into fornecedor (nome, cnpj, telefone, email, endereco) " +
+        String sql = "insert into fornecedor (nome, cnpj, telefone, email, endereco) " +
                 "values (?, ?, ?, ?, ?)";
         PreparedStatement stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
         try {
@@ -44,7 +44,7 @@ public class FornecedorDAO {
                     fornecedor.setCodigo(generatedKeys.getInt(1));
                 }
             }
-            return stmt.executeUpdate();
+            return linhasInseridas;
         }
         catch (SQLException err) {
             System.err.println(err.getMessage());
@@ -61,7 +61,7 @@ public class FornecedorDAO {
             ResultSet retorno = stmt.executeQuery();
             if (retorno.next()) {
                 Fornecedor aux = new Fornecedor();
-                aux.setCodigo(retorno.getInt("id_funcionario"));
+                aux.setCodigo(retorno.getInt("codigo"));
                 aux.setNome(retorno.getString("nome"));
                 aux.setCnpj(retorno.getString("cnpj"));
                 aux.setTelefone(retorno.getString("telefone"));
