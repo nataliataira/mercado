@@ -7,7 +7,7 @@ import java.util.List;
 public class Mercado {
     public static void main(String[] args) {
         try {
-            new RegistroFornecedor();
+//            new RegistroFornecedor();
 
             // Fornecedor
             Fornecedor fornecedorA = new Fornecedor("CEAGESP",
@@ -59,7 +59,7 @@ public class Mercado {
             Item itemC12 = new Item(produtoB, 5, 10.0);
             List<Item> itensCompra1 = Arrays.asList(itemC11, itemC12);
             // Nova Compra
-            gst.realizarCompra(fornecedorA, itensCompra1, "Cartão de Crédito");
+            gst.realizarCompra(fornecedorA, itensCompra1, "cartão");
 
             // Compra 2
             // Lista de Compras
@@ -67,7 +67,7 @@ public class Mercado {
             Item item22 = new Item(produtoB, 5, 10.0);
             List<Item> itensCompra2 = Arrays.asList(itemC21, item22);
             // Nova Compra
-            gst.realizarCompra(fornecedorA, itensCompra2, "Cartão de Crédito");
+            gst.realizarCompra(fornecedorA, itensCompra2, "Cartão");
 
             // Op. Caixa
             OperadorDeCaixa op = new OperadorDeCaixa(1,
@@ -88,7 +88,7 @@ public class Mercado {
             Item vendaItem2 = new Item(produtoB, 1, 14.50);
             List<Item> itensVenda = Arrays.asList(vendaItem1, vendaItem2);
             // Nova Venda
-            op.realizarVenda(itensVenda, "PIX");
+            op.realizarVenda(itensVenda, "pix");
         }
         catch (Exception err) {
             System.err.println(err.getMessage());

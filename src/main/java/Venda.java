@@ -24,11 +24,13 @@ public class Venda extends Operacao {
         valorTotal = totalOperacao();
         setValorTotal(valorTotal);
 
+        System.out.println("");
         System.out.println("Venda realizada com sucesso!");
         System.out.println("Itens vendidos: ");
         for (Item item : getItens()) {
             System.out.println("- " + item.getProduto().getNome() + ": " + item.getQuantidade() + " unidades.");
         }
         System.out.println("Valor total da venda: R$" + valorTotal);
+        System.out.println("");
     }
 }

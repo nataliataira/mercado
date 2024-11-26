@@ -9,7 +9,10 @@ public class Fornecedor {
     private String telefone;
     private String email;
 
-    public Fornecedor(String nome, String cnpj, String endereco, String telefone, String email) {
+    public Fornecedor() {}
+
+    public Fornecedor(int codigo, String nome, String cnpj, String endereco, String telefone, String email) throws IllegalArgumentException {
+        setCodigo(codigo);
         setNome(nome);
         setCnpj(cnpj);
         setEndereco(endereco);
@@ -17,8 +20,7 @@ public class Fornecedor {
         setEmail(email);
     }
 
-    public Fornecedor(int codigo, String nome, String cnpj, String endereco, String telefone, String email) throws IllegalArgumentException {
-        setCodigo(codigo);
+    public Fornecedor(String nome, String cnpj, String endereco, String telefone, String email) throws IllegalArgumentException {
         setNome(nome);
         setCnpj(cnpj);
         setEndereco(endereco);

@@ -32,6 +32,7 @@ public class Compra extends Operacao {
             produto.atualizaQuantidade(item.getQuantidade());
         }
 
+        System.out.println("");
         System.out.println("Compra realizada com sucesso!");
         System.out.println("Fornecedor: " + fornecedor.getNome());
         System.out.println("Itens comprados: ");
@@ -39,5 +40,6 @@ public class Compra extends Operacao {
             System.out.println("- " + item.getProduto().getNome() + ": " + item.getQuantidade() + " unidades.");
         }
         System.out.println("Valor total da compra: R$" + getValorTotal());
+        System.out.println("");
     }
 }

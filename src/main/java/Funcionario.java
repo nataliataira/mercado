@@ -70,6 +70,7 @@ public abstract class Funcionario {
             throw new IllegalArgumentException("Telefone não pode ser vazio.");
         }
         else if (telefone.length() < TAM_MIN_TEL)
+            throw new IllegalArgumentException("Telefone inválido.");
         this.telefone = telefone;
     }
 
@@ -93,11 +94,13 @@ public abstract class Funcionario {
 
     public void consultarDados()
     {
+        System.out.println("");
         System.out.println("Consulta ao funcionário");
         System.out.println("nome: "+getNome());
         System.out.println("cnpj: "+getCPF());
         System.out.println("endereço : "+getEndereco());
         System.out.println("telefone : "+getTelefone());
         System.out.println("email : "+getEmail());
+        System.out.println("");
     }
 }
