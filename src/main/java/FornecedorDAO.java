@@ -7,7 +7,7 @@ public class FornecedorDAO {
     public FornecedorDAO() throws SQLException {
         String sql = "create table if not exists fornecedor(codigo int auto_increment primary key, "
                 + "nome varchar(255) not null,"
-                + "cnpj varchar(14) not null unique,"
+                + "cnpj varchar(18) not null unique,"
                 + "telefone varchar(20),"
                 + "email varchar(255),"
                 + "endereco varchar(255))";
