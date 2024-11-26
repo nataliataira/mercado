@@ -279,6 +279,8 @@ public class CadastroFornecedor extends JFrameFormat {
             if (dao.inserirFornecedor(novoFornecedor) == 1)
                 this.limparTextFields();
 
+            JOptionPane.showMessageDialog(this, "Fornecedor cadastrado com sucesso.", "Cadastro realizado", JOptionPane.INFORMATION_MESSAGE);
+
         } catch (SQLException err) {
             System.err.println(err.getMessage());
         }

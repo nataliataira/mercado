@@ -322,6 +322,10 @@ public class GestaoFornecedor extends JFrameFormat {
                 txtCnpj.setText(fornecedor.getCnpj());
                 txtTelefone.setText(fornecedor.getTelefone());
                 txtEndereco.setText(fornecedor.getEndereco());
+
+                JOptionPane.showMessageDialog(this, "Fornecedor encontrado!", "Busca feita", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Fornecedor não encontrado, verifique o código novamente.", "Fornecedor desconhecido", JOptionPane.WARNING_MESSAGE);
             }
 
         } catch (SQLException err) {
@@ -346,10 +350,9 @@ public class GestaoFornecedor extends JFrameFormat {
             FornecedorDAO dao = new FornecedorDAO();
 
             if (dao.excluirFornecedor(fornecedor) == 1){
-
-//              jLabel1.setText("Cliente removido com sucesso");
+                JOptionPane.showMessageDialog(this, "Fornecedor excluido.", "Exclusão finalizada", JOptionPane.INFORMATION_MESSAGE);
             } else {
-//                jLabel1.setText("Ocorreu um erro");
+                JOptionPane.showMessageDialog(this, "Ocorreu um erro ao excluir o fornecedor.", "Fornecedor não excluido", JOptionPane.ERROR_MESSAGE);
             }
 
             this.limparTextFields();
@@ -384,9 +387,9 @@ public class GestaoFornecedor extends JFrameFormat {
             if (dao.atualizarFornecedor(fornecedor) == 1){
                 this.limparTextFields();
 
-//                jLabel1.setText("Cliente alterado com sucesso");
+                JOptionPane.showMessageDialog(this, "Fornecedor atualizado com sucesso.", "Atualização feita", JOptionPane.INFORMATION_MESSAGE);
             } else {
-//                jLabel1.setText("Ocorreu um erro");
+                JOptionPane.showMessageDialog(this, "Ocorreu um erro ao atualizar o fornecedor.", "Fornecedor não atualizado", JOptionPane.ERROR_MESSAGE);
             }
 
             this.limparTextFields();
